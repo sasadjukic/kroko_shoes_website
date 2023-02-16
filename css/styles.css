@@ -1,0 +1,603 @@
+
+/* Media query should change outline bellow 540px
+   Up until then it looks good */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* colors */
+    --kroko-black: #000000;
+    --kroko-dark-brown: #222222;
+    --kroko-light-brown: #825f38;
+    --kroko-green: #284f3a;
+    --kroko-blue: #363d57;
+    --kroko-orange: #ff9400;
+    --kroko-white: #ffffff;
+
+    /* fonts */
+    --kroko-main-font: 'Raleway', sans-serif;
+    --kroko-highlight-font: 'Anton', sans-serif;
+    --kroko-fw-thin: 100;
+    --kroko-fw-regular: 400;
+    --kroko-fw-bold: 800;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* landing page */
+
+.landing-page {
+    width: 100%;
+}   
+
+    .landing-container {
+        background: url(../images/landing_page/kroko_home.jpg);
+        background-size: cover;
+        background-position: center;
+        min-height: 1280px;
+    }
+
+    .landing {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .hamburger {
+            margin-right: -300px;
+            padding: 10px;
+            display: none;
+            cursor: pointer;
+        }
+
+            .bar {
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                background: var(--kroko-black);
+                -webkit-transition: all .3s ease-in-out;
+                transition: all .3s ease-in-out;
+            }
+
+        .navbar {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+            .navbar-link {
+                text-decoration: none;
+                color: var(--kroko-light-brown);
+                font-family: var(--kroko-main-font);
+                font-weight: var(--kroko-fw-bold);
+                font-size: 1.25rem;
+            }
+
+            .navbar-link:hover {
+                color: orange;
+                text-decoration: underline;
+            }
+
+            .nav-logo-img {
+                visibility: hidden;
+            }
+
+        .company-intro {
+            color: var(--kroko-black);
+            font-family: var(--kroko-main-font);
+            font-weight: var(--kroko-fw-regular);
+            font-size: 1.25rem;
+            max-width: 500px;
+        }
+
+/* image links to men and women collections */
+
+.men-women-container {
+    display: flex;
+    gap: 25px;
+}
+
+    /* responsive is added to all images across landing page to resize images based on device*/
+    .responsive {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .men-container,
+    .women-container {
+        position: relative;
+        padding: 50px;
+    } 
+
+        .collection-image {
+            border-radius: 20px;
+        }
+
+        .collection-action {
+            position: absolute;
+            top: 70%;
+            left: 42%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .collection-hdln {
+                text-transform: uppercase;
+                font-family: var(--kroko-main-font);
+                color: var(--kroko-white);
+            }
+
+            .mhdln {
+                color: var(--kroko-green);
+            }
+
+            .whdln {
+                color: var(--kroko-blue);
+            }
+        
+            .collection-btn {
+                text-transform: uppercase;
+                font-family: var(--kroko-main-font);
+                background-color: var(--kroko-white);
+                color: var(--kroko-green);
+                border: none;
+                border-radius: 5px;
+                padding: 10px 15px;
+            }
+
+            .mcbtn:hover {
+                cursor: pointer;
+                background-color: var(--kroko-green);
+                color: var(--kroko-orange);
+                animation: bg-color-m;
+                animation-duration: 1s;
+            }
+
+            .wcbtn:hover {
+                cursor: pointer;
+                background-color: var(--krooko-blue);
+                color: var(--kroko-orange);
+                animation: bg-color-w;
+                animation-duration: 1s;
+            }
+
+/* styles for both men and women spotlight and highlights */
+
+.spotlight-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+    .spotlight-header {
+        color: var(--kroko-light-brown);
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .sh1 {
+        font-family: var(--kroko-main-font);
+        font-size: 1.5rem;
+    }
+
+    .sh2 {
+        color: var(--kroko-black);
+        font-family: var(--kroko-main-font);
+        font-size: 2.25rem;
+    }
+
+    .spotlight-shoes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }   
+
+        .spotlight-slider {
+            position: relative;
+        }
+
+            .m-slide, 
+            .w-slide {
+                animation-name: fade;
+                animation-duration: 2s;
+            }
+
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                margin-top: -22px;
+                padding: 16px;
+                color: var(--kroko-dark-brown);
+                font-weight: bold;
+                font-size: 3rem;
+                transition: 0.6s ease;
+                border-radius: 0 3px 3px 0;
+                user-select: none;
+            }
+            
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+
+            .prev:hover, .next:hover {
+                color: var(--kroko-light-brown);
+            }
+
+                .dot,
+                .w-dot {
+                    cursor: pointer;
+                    height: 15px;
+                    width: 15px;
+                    margin: 0 2px;
+                    background-color: var(--kroko-black);
+                    border-radius: 50%;
+                    display: inline-block;
+                    transition: background-color 0.6s ease;
+                }
+            
+                .light, 
+                .dot:hover,
+                .w-dot:hover {
+                    background-color: var(--kroko-light-brown);
+                }
+
+/* highlights containg 4 pics each */
+.highlights-main {
+    margin: 50px 0px 50px 0px;
+}
+
+    .highlights-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .highlights-header {
+            text-transform: uppercase;
+            font-family: var(--kroko-main-font);
+            color: var(--kroko-black);
+            margin-top: 100px;
+        }
+
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .item-title, 
+            .item-price {
+                text-align: center;
+                font-family: 'Segoe UI', sans-serif;
+                text-transform: uppercase;
+                color: var(--kroko-light-brown);
+                font-weight: var(--kroko-fw-thin);
+                opacity: .75;
+            }
+
+.breaker {
+    margin-bottom: 50px;
+}
+
+/* bottom of the page contact section */
+.kroko-contact {
+    display: flex;
+    justify-content: space-around;
+    min-width: 100vw;
+    background: var(--kroko-black);
+    color: var(--kroko-white);
+    padding: 50px;
+    font-family: var(--kroko-main-font);
+}
+
+    .contact-title {
+        text-align: center;
+        padding: 20px;
+        font-weight: var(--kroko-font-bold);
+        color: var(--kroko-orange);
+    }
+
+    .contact-deets {
+        padding: 10px;
+    }
+
+    .socials-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+        .socials-container a{
+            text-decoration: none;
+            color: var(--kroko-white);
+        }
+
+        .socials-container a:hover {
+            color: var(--kroko-orange);
+        }
+
+.create {
+    text-align: center;
+    width: 100vw;
+    background: var(--kroko-black);
+    color: var(--kroko-white);
+    font-family: var(--kroko-main-font);
+}
+
+.create a {
+    text-decoration: none;
+    color: var(--kroko-orange);
+}
+
+/* universal 'reveal' class that triggers many elements on the main page */
+
+.reveal {
+    position: relative;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: 1s all ease;
+    }
+
+    .reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+    }
+
+/* about page css */
+
+.about-info-container {
+    margin-top: 100px;
+    gap: 100px;
+}
+
+    .about-info {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        font-size: 2rem;
+        font-family: var(--kroko-main-font);
+        color: var(--kroko-black);
+    }
+
+        .info-row {
+            display: flex;
+            gap: 25px;
+        }
+
+            .info-para {
+                max-width: 500px;
+                display: grid;
+                align-self: center;
+            }
+
+.all-question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--kroko-white);
+    width: 100%;
+    padding: 100px 0;
+}
+
+
+    .question-answer-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .question-answer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 75px;
+        }
+
+            .question {
+                font-family: var(--kroko-highlight-font);
+                font-size: 2rem;
+                color: var(--kroko-black);
+                text-align: center;
+            }
+
+            .answer {
+                text-align: center;
+                font-family: var(--kroko-main-font);
+                font-size: 1.25rem;
+                color: var(--kroko-light-brown);
+            }
+
+            .sm-answer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .sm-links {
+                color: var(--kroko-orange);
+            }
+
+            .sm-links:hover {
+                color: var(--kroko-dark-brown);
+            }
+
+/* men.html and women.html page css */
+.men-collection,
+.women-collection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* fixes for tablets */
+
+@media (max-width: 1500px) {
+
+    .spotlight-shoes {
+        width: 100%;
+    }
+
+    .men-women-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-info-container {
+        margin-top: 50px;
+    }
+  
+}
+
+/* fixes for cell phones */
+
+@media (max-width: 500px) {
+
+    .hamburger {
+        display: block;
+        z-index: 2
+      }
+    
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+    
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background: var(--kroko-light-brown);
+      }
+    
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background: var(--kroko-light-brown);
+      }
+
+    .nav-logo-img {
+        visibility: visible;
+        height: 250px;
+        width: 250px;
+    }
+
+    .logo-img {
+        width: 350px;
+        height: 350px;
+    }
+
+    .company-intro {
+        max-width: 250px;
+    }
+  
+    .navbar {
+        position: fixed;
+        top: -100%;
+        gap: 15px;
+        flex-direction: column;
+        background-color: var(--kroko-black);
+        width: 250px;
+        text-align: center;
+        transition: all .4s;
+        opacity: 0;
+    }
+
+    .navbar.active {
+        top: -50px;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        opacity: 1;
+        z-index: 1;
+        justify-content: center;
+    }
+
+    .collection-action {
+        top: 55%;
+        left: 30%;
+    }
+
+    .info-para {
+        max-width: 300px;
+    }
+
+    .mhdln, 
+    .whdln {
+        color: var(--kroko-white);
+    }
+
+    .kroko-contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .highlights {
+        flex-direction: column;
+    }
+}
+
+/* Animation for collection buttons */
+@keyframes bg-color-m {
+    0% {
+        background-color: var(--kroko-white);
+    }
+
+    100% {
+        background-color: var(--kroko-green);
+        color: var(--kroko-orange);
+    }
+}
+
+@keyframes bg-color-w {
+    0% {
+        background-color: var(--kroko-white);
+    }
+
+    100% {
+        background-color: var(--kroko-blue);
+        color: var(--kroko-orange);
+    }
+}
+
+/* spotlight animation */
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+
